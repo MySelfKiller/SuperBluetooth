@@ -2,4 +2,11 @@
 .gradle/
 .DS_Store
 /build
-
+*.iml
+/local.properties
+.gitignore
+gradle.properties
+gradle/
+gradlew
+gradlew.bat
+settings.gradle
