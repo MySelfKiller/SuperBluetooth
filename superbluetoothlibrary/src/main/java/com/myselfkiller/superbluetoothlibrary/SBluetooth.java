@@ -1,23 +1,24 @@
 package com.myselfkiller.superbluetoothlibrary;
 
-import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 
-import java.util.HashSet;
+import com.myselfkiller.superbluetoothlibrary.b2.SBluetoothImpl;
 
 /**
  * Created by Killer on 2018/7/18.
  */
 
-public class SBluetooth implements SBluetoothListener{
-    private HashSet<SBluetoothListener> listenerList;
+public class SBluetooth {
+
+    private SBluetoothImpl sBluetooth;
     private static volatile SBluetooth self;
-    private SBluetooth(){
-        listenerList = new HashSet<SBluetoothListener>();
+    private SBluetooth(Context context){
+        sBluetooth = new SBluetoothImpl(context);
     }
-    public static SBluetooth getInstance(){
+    public static SBluetooth getInstance(Context context){
         if (null == self){
             synchronized (SBluetooth.class){
-                self = new SBluetooth();
+                self = new SBluetooth(context);
 
             }
         }
@@ -25,62 +26,18 @@ public class SBluetooth implements SBluetoothListener{
     }
 
     public void setListener(SBluetoothListener listener){
-        listenerList.add(listener);
+        sBluetooth.setListener(listener);
     }
 
     public void removeListener(SBluetoothListener listener){
-        listenerList.remove(listener);
+        sBluetooth.removeListener(listener);
     }
 
     public void isShowBluetoothList(){
-
+        sBluetooth.isShowBluetoothList();
     }
 
     public void searchBluetooth(){
-
-    }
-
-
-
-
-
-    @Override
-    public void onBluetoothNotSupported() {
-
-    }
-
-    @Override
-    public void onBluetoothDisabled() {
-
-    }
-
-    @Override
-    public void onBluetoothDeviceDisconnected() {
-
-    }
-
-    @Override
-    public void onConnectingBluetoothDevice() {
-
-    }
-
-    @Override
-    public void onBluetoothDeviceConnected(String name, String address) {
-
-    }
-
-    @Override
-    public void onBluetoothSerialRead(String message) {
-
-    }
-
-    @Override
-    public void onBluetoothSerialWrite(String message) {
-
-    }
-
-    @Override
-    public void onBluetoothDeviceFound(BluetoothDevice device) {
-
+        sBluetooth.searchBluetooth();
     }
 }

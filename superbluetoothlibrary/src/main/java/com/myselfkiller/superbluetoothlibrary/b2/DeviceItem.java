@@ -59,7 +59,7 @@ public class DeviceItem extends LinearLayout {
 
     @Override
     public View getChildAt(int index) {
-        return super.getChildAt(index);
+        return layout.getChildAt(index);
     }
 
     public View getView() {

@@ -62,7 +62,7 @@ public class BluetoothSerial {
                         String name = device.getName();
                         String address = device.getAddress();
                         if (name != null) {
-                            Log.e(TAG, "onReceive: name= " + name+", address = "+ address);
+                            Log.e(TAG, "onReceive: name=" + name+", address="+ address);
                             mListener.onBluetoothDeviceFound(device);
 //                            if (name.contains("HC-31")) {
 //                                if (mAdapter.isDiscovering())
@@ -171,6 +171,7 @@ public class BluetoothSerial {
             return false;
         } else {
             if (!mAdapter.isEnabled()) {
+                mAdapter.enable();
                 mListener.onBluetoothDisabled();
                 return false;
             } else {
