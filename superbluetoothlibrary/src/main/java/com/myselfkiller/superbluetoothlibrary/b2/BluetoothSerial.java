@@ -190,7 +190,7 @@ public class BluetoothSerial {
             mAdapter.startDiscovery();
         }
 //        handler.post(seracheThread);
-        handler.postDelayed(seracheThread, 15000);
+        handler.postDelayed(seracheThread, 10000);
     }
 
     Handler handler = new Handler();
